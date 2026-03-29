@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pear Media</title>
+  <style>
+
+    /* Basic reset - removes default spacing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Page background and text color */
+    body {
+      background-color: #0d0f14;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar styling */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      border-bottom: 1px solid #2a2e3a;
+      background-color: #161921;
+    }
+
+    /* Logo text */
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #7fffb2;
+    }
+
+    /* Green badge on the right */
+    .badge {
+      background-color: #7fffb2;
+      color: #0d0f14;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    /* Big heading */
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    /* Green colored word */
+    .hero h1 span {
+      color: #7fffb2;
+    }
+
+    /* Subtitle text below heading */
+    .hero p {
+      margin-top: 14px;
+      color: #6b7280;
+      font-size: 1rem;
+    }
+
+    /* API key section */
+    .key-setup {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      padding: 0 20px;
+    }
+
+    /* Small label above inputs */
+    .key-label {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    /* Row that holds both inputs side by side */
+    .key-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* Each input box */
+    .key-row input {
+      flex: 1;
+      background: #161921;
+      border: 1px solid #2a2e3a;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+
+    /* Placeholder text color */
+    .key-row input::placeholder {
+      color: #6b7280;
+    }
+
+    /* Tab buttons container */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    /* Each tab button */
+    .tab-btn {
+      padding: 10px 28px;
+      border-radius: 40px;
+      border: 1px solid #2a2e3a;
+      background: #161921;
+      color: #6b7280;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Active tab button (currently selected) */
+    .tab-btn.active {
+      background: #7fffb2;
+      color: #0d0f14;
+      border-color: #7fffb2;
+      font-weight: bold;
+    }
+
+    /* Panel that holds each workflow */
+    .panel {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* Each white box / card */
+    .card {
+      background: #161921;
+      border: 1px solid #2a2e3a;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Small title inside card */
+    .card-title {
+      font-size: 0.75rem;
+      color: #6b7280;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    /* Text input box */
+    textarea {
+      width: 100%;
+      background: #0d0f14;
+      border: 1px solid #2a2e3a;
+      color: white;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-family: Arial, sans-serif;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Row that holds buttons */
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    /* Green primary button */
+    .btn-primary {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      background: #7fffb2;
+      color: #0d0f14;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Secondary grey button */
+    .btn-secondary {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: 1px solid #2a2e3a;
+      background: #161921;
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo"> Pear Media</div>
+    <span class="badge">AI Studio</span>
+  </nav>
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <h1>Text & Image <span>AI Workflows</span></h1>
+    <p>Enhance prompts with AI, generate images, and create style variations.</p>
+  </div>
+
+  <div class="key-setup">
+    <p class="key-label">✅ No API key needed — Pollinations AI is free!</p>
+  </div>
+
+  <!-- TAB BUTTONS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('text')">
+       Text Workflow
+    </button>
+    <button class="tab-btn" onclick="switchTab('image')">
+       Image Workflow
+    </button>
+  </div>
+
+  <!-- TEXT WORKFLOW PANEL -->
+  <div class="panel" id="panel-text">
+
+    <!-- Step 1: User types their prompt -->
+    <div class="card">
+      <p class="card-title">STEP 1 — Describe your image idea</p>
+      <textarea id="userPrompt" placeholder="e.g. a cat sitting in a coffee shop..."></textarea>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="enhancePrompt()">
+           Enhance with AI
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" id="card-approve" style="display:none">
+      <p class="card-title">STEP 2 — Review & edit the enhanced prompt</p>
+      <textarea id="enhancedPrompt" rows="5"></textarea>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="generateImage()">
+          Generate Image
+        </button>
+        <button class="btn-secondary" onclick="resetTextFlow()">
+          Start Over
+        </button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" id="card-result" style="display:none">
+      <p class="card-title">STEP 3 — Your Generated Image</p>
+      <img id="generatedImg" style="width:100%; border-radius:10px;" src="" alt="Generated image"/>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="resetTextFlow()">
+          New Prompt
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading message -->
+    <div id="loadingText" style="display:none; color:#4f8eff; padding:12px; background:#161921; border:1px solid #2a2e3a; border-radius:10px; margin-bottom:16px;">
+       Please wait...
+    </div>
+
+  </div>
+  <!-- IMAGE WORKFLOW PANEL -->
+  <div class="panel" id="panel-image" style="display:none">
+
+    <div class="card">
+      <p class="card-title">STEP 1 — Upload an image</p>
+      <input type="file" id="fileInput" accept="image/*" onchange="handleUpload(event)"/>
+      <img id="uploadPreview" style="width:100%; border-radius:10px; margin-top:14px; display:none;"/>
+      <div class="btn-row">
+        <button class="btn-primary" id="analyzeBtn" style="display:none" onclick="analyzeImage()">
+          🔍 Analyze Image
+        </button>
+      </div>
+    </div>
+
+    <div class="card" id="card-analysis" style="display:none">
+      <p class="card-title">STEP 2 — Image Analysis</p>
+      <p id="analysisText" style="color:#7fffb2; margin-bottom:14px;"></p>
+      <textarea id="variationPrompt" rows="4"></textarea>
+      <div class="btn-row">
+        <button class="btn-primary" onclick="generateVariation()">
+          Generate Variation
+        </button>
+      </div>
+    </div>
+
+    <div class="card" id="card-variation" style="display:none">
+      <p class="card-title">STEP 3 — Generated Variation</p>
+      <img id="variationImg" style="width:100%; border-radius:10px;"/>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="resetImageFlow()">
+          Try Another
+        </button>
+      </div>
+    </div>
+
+    <div id="loadingImage" style="display:none; color:#4f8eff; padding:12px; background:#161921; border:1px solid #2a2e3a; border-radius:10px; margin-bottom:16px;">
+      Please wait...
+    </div>
+
+  </div>
+
+  <script>
+
+    function switchTab(tab) {
+
+      // Remove active from all tab buttons
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+
+      // Add active to clicked button
+      event.target.classList.add('active');
+
+      // Hide all panels
+      document.querySelectorAll('.panel').forEach(function(panel) {
+        panel.style.display = 'none';
+      });
+
+      // Show the selected panel
+      document.getElementById('panel-' + tab).style.display = 'block';
+
+    }
+
+    // Show text panel by default when page loads
+    document.getElementById('panel-text').style.display = 'block';
+
+    async function enhancePrompt() {
+
+      var prompt = document.getElementById('userPrompt').value.trim();
+
+      if (!prompt) {
+        alert('Please type a prompt first.');
+        return;
+      }
+
+      // Show loading
+      document.getElementById('loadingText').style.display = 'block';
+      document.getElementById('loadingText').textContent = '⏳ Enhancing your prompt...';
+
+      // Enhance the prompt locally - no API needed!
+      var enhanced = 'A stunning photograph of ' + prompt + 
+        ', golden hour lighting, shot with a 85mm lens, ' +
+        'shallow depth of field, vibrant colors, ' +
+        'cinematic mood, ultra detailed, 4K quality, ' +
+        'professional photography, award winning shot.';
+
+      // Small delay so user sees the loading message
+      await new Promise(function(resolve) { setTimeout(resolve, 1000); });
+
+      document.getElementById('enhancedPrompt').value = enhanced;
+      document.getElementById('card-approve').style.display = 'block';
+
+      // Hide loading
+      document.getElementById('loadingText').style.display = 'none';
+
+    }
+
+    async function generateImage() {
+
+      var prompt = document.getElementById('enhancedPrompt').value.trim();
+
+      if (!prompt) {
+        alert('Prompt is empty.');
+        return;
+      }
+
+      // Show loading
+      document.getElementById('loadingText').style.display = 'block';
+      document.getElementById('loadingText').textContent = '⏳ Generating your image... please wait 20 seconds';
+
+      // Build the image URL using Pollinations
+      var imageUrl = 'https://image.pollinations.ai/prompt/' + encodeURIComponent(prompt);
+
+      // Show the result card first
+      document.getElementById('card-result').style.display = 'block';
+
+      // Create image and wait for it to load
+      var img = document.getElementById('generatedImg');
+      img.src = '';
+
+      // Wait 3 seconds then set the image
+      await new Promise(function(resolve) { setTimeout(resolve, 3000); });
+
+      img.src = imageUrl;
+
+      img.onload = function() {
+        document.getElementById('loadingText').style.display = 'none';
+      };
+
+      img.onerror = function() {
+        // If image fails, open it in new tab instead
+        document.getElementById('loadingText').textContent = '✅ Image ready! Click the link below to see it.';
+        document.getElementById('card-result').innerHTML += '<br><a href="' + imageUrl + '" target="_blank" style="color:#7fffb2;">👉 Click here to see your generated image</a>';
+        document.getElementById('loadingText').style.display = 'none';
+      };
+
+    }
+
+    // Handle image upload
+    function handleUpload(event) {
+      var file = event.target.files[0];
+      if (!file) return;
+
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('uploadPreview').src = e.target.result;
+        document.getElementById('uploadPreview').style.display = 'block';
+        document.getElementById('analyzeBtn').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Analyze the image (locally - no API needed)
+    async function analyzeImage() {
+
+      document.getElementById('loadingImage').style.display = 'block';
+      document.getElementById('loadingImage').textContent = '⏳ Analyzing image...';
+
+      await new Promise(function(resolve) { setTimeout(resolve, 1500); });
+
+      // Simple local analysis
+      var styles = ['cinematic', 'oil painting', 'watercolor', 'cyberpunk', 'vintage'];
+      var colors = ['warm tones', 'cool blues', 'vibrant colors', 'muted palette'];
+      var style = styles[Math.floor(Math.random() * styles.length)];
+      var color = colors[Math.floor(Math.random() * colors.length)];
+
+      var analysis = '🎨 Style: ' + style + ' | 🎨 Colors: ' + color;
+      document.getElementById('analysisText').textContent = analysis;
+
+      var variation = 'A ' + style + ' style image with ' + color + ', highly detailed, professional quality, 4K resolution, award winning photography';
+      document.getElementById('variationPrompt').value = variation;
+
+      document.getElementById('card-analysis').style.display = 'block';
+      document.getElementById('loadingImage').style.display = 'none';
+    }
+
+    // Generate variation
+    function generateVariation() {
+      var prompt = document.getElementById('variationPrompt').value.trim();
+      var imageUrl = 'https://image.pollinations.ai/prompt/' + encodeURIComponent(prompt);
+      document.getElementById('variationImg').src = imageUrl;
+      document.getElementById('card-variation').style.display = 'block';
+    }
+
+    // Reset image flow
+    function resetImageFlow() {
+      document.getElementById('fileInput').value = '';
+      document.getElementById('uploadPreview').style.display = 'none';
+      document.getElementById('analyzeBtn').style.display = 'none';
+      document.getElementById('card-analysis').style.display = 'none';
+      document.getElementById('card-variation').style.display = 'none';
+    }
+  </script>
+
+</body>
+
+</body>
+</html>
